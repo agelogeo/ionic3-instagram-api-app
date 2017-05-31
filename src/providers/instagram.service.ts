@@ -27,44 +27,10 @@ export class InstagramService {
     this.lat = lat;
     this.long = long;
   }
-
-  getMediaByLocation(response): Observable<any> {
-    let result;
-    
-    this.geo.getCurrentPosition()
-      .then((resp) => {
-        if (resp) {
-          let url = 'https://api.instagram.com/v1/media/search?lat=' + resp.coords.latitude + '&lng=' + resp.coords.longitude + '&distance=5000&access_token=' + response.access_token;
-          
-          result = this.http.get(url)
-            .map((res) => {
-              res.json();
-            });
-        }
-      }).catch((error) => {
-        this.showAlert('erro ao conferir geolocalização: ' + error);
-      });
-
-      return result;
-  }
-
+  
   getByLocation(response) {
     return this.http.get('https://api.instagram.com/v1/media/search?lat=' + this.lat + '&lng=' + this.long + '&access_token=' + response.access_token + '&distance=' + this.distance + '000')
     .map((res) => res.json());
-  }
-
-  getLocation(): Promise<any> {
-    this.geo.getCurrentPosition()
-      .then((resp) => {
-        this.lat = resp.coords.latitude;
-        this.long = resp.coords.longitude;
-      }).catch((error) => {
-        this.showAlert('erro ao conferir geolocalização: ' + error);
-      });
-
-      return new Promise((resolve, reject) => {
-        resolve({ lat: this.lat, long: this.long})
-      })
   }
 
   getLocationName() {
