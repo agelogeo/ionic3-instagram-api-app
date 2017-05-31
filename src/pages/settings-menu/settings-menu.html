@@ -1,0 +1,25 @@
+<ion-list no-lines>
+  
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">Distância <ion-badge item-right>{{distance}}km</ion-badge></ion-item-divider>
+      <ion-item>
+        <ion-range min="1" max="5" pin="true" [ngModel]="distance" (ngModelChange)="changeDistance($event)">
+          <ion-label range-left>1km</ion-label>
+          <ion-label range-right>5km</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <ion-item-group>
+    <ion-item-divider color="light">Opções</ion-item-divider>
+    <button ion-item (click)="close()">Learn Ionic</button>
+    <button ion-item (click)="close()">Documentation</button>
+    <button ion-item (click)="close()">Showcase</button>
+    <button ion-item (click)="close()">GitHub Repo</button>
+  </ion-item-group>
+</ion-list>
+
+<div text-center margin>
+  <button ion-button block (click)="close()">Fechar</button>
+</div>

@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Opções</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <strong>Distância</strong> <ion-badge float-right>{{distance}}km</ion-badge>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-range min="1" max="5" pin [ngModel]="distance" (ngModelChange)="changeDistance($event)">
+        <ion-label range-left>1km</ion-label>
+        <ion-label range-right>5km</ion-label>
+      </ion-range>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

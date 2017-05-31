@@ -1,0 +1,44 @@
+<div *ngIf="isGrade == false; else gradeCard">
+  <ion-card no-margin *ngFor="let m of medias">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{m.user.profile_picture}}">
+      </ion-avatar>
+      <p>
+        {{m.user.username}} <br />
+        <small>{{m.location.name}}</small>
+      </p>
+      <ion-icon name="more" item-right></ion-icon>
+    </ion-item>
+
+    <img src="{{m.images.low_resolution.url}}" height="{{m.images.low_resolution.height}}">
+    
+    <ion-row id="icons">
+      <ion-col col-1>
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon name="text"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="likes">
+      <p><strong>{{m.likes.count}} curtidas</strong></p>
+    </ion-row>
+
+    <ion-card-content>
+      <p *ngIf="m.caption != null"><strong>{{m.user.username}}</strong> {{m.caption.text}}</p>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+<ng-template #gradeCard>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-4 no-padding no-margin *ngFor="let m of medias">
+        <img src="{{m.images.thumbnail.url}}" width="{{m.images.thumbnail.width}}" height="{{m.images.thumbnail.height}}">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ng-template>

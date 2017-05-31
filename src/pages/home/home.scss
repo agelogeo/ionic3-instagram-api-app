@@ -1,0 +1,30 @@
+page-home {
+    ion-content {
+        .distance {
+            margin-bottom:0;
+
+            .item {
+                background:#E0F2F1;
+            }
+        }
+    }
+
+    .distance .item span.msg {
+        font-size:0.8em;
+        color:#696969;
+    }
+
+    ion-title {
+        span {
+            font-size:0.8em;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+    }
+
+    .card:first-child {
+        margin-top:5px;
+    }
+}

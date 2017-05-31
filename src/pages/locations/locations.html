@@ -1,0 +1,17 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Locais próximos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list no-lines>
+  <button ion-item *ngFor="let l of locations">
+    {{ l }}
+  </button> 
+</ion-list>
+
+</ion-content>

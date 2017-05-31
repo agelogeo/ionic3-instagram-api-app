@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      <p no-margin>Publicações próximas</p>
+      <span>{{locationName}}</span>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="toggleView()">
+        <ion-icon name="grid" *ngIf="!isGrade; else List"></ion-icon>
+        <ng-template #List>
+          <ion-icon name="menu"></ion-icon>
+        </ng-template>
+      </button>
+      <button ion-button icon-only (click)="listLocations()">
+        <ion-icon name="pin"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="showSettings($event)">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="distance" text-center>
+    <ion-item>
+      <span class="msg">Exibindo um raio de {{distance}} km</span>
+      <button ion-button item-right small outline (click)="showSettings($event)">MODIFICAR</button>
+    </ion-item>
+  </ion-list>
+
+  <instagram-card [medias]="medias" [isGrade]="isGrade"></instagram-card>
+  
+
+</ion-content>
