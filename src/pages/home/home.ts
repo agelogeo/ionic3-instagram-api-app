@@ -4,9 +4,8 @@ import { InstagramService } from './../../providers/instagram.service';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, PopoverController, NavParams, Content, Loading } from 'ionic-angular';
 
-import { AlertController, Header, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { SettingsPage } from './../settings/settings';
-import { SettingsMenuPage } from './../settings-menu/settings-menu';
 
 @Component({
   selector: 'page-home',

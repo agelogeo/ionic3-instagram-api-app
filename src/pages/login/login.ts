@@ -1,7 +1,7 @@
 import { HomePage } from './../home/home';
 import { InstagramService } from './../../providers/instagram.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Instagram } from "ng2-cordova-oauth/core";  
 import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';

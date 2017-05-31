@@ -4,9 +4,6 @@ import { Http } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import 'rxjs/add/operator/map';
 
-import { Instagram } from "ng2-cordova-oauth/core";  
-import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
-import { Observable } from "rxjs";
 
 @Injectable()
 export class InstagramService {
