@@ -7,11 +7,11 @@
       <p>
         {{m.user.username}} <br />
         <small>{{m.location.name}}</small>
-      </p>
+      </p> 
       <ion-icon name="more" item-right></ion-icon>
     </ion-item>
 
-    <img src="{{m.images.low_resolution.url}}" height="{{m.images.low_resolution.height}}">
+    <img src="{{m.images.standard_resolution.url}}"> 
     
     <ion-row id="icons">
       <ion-col col-1>
@@ -32,11 +32,11 @@
   </ion-card>
 </div>
 
-<ng-template #gradeCard>
+<ng-template #gradeCard class="grade">
   <ion-grid no-padding>
     <ion-row>
       <ion-col col-4 no-padding no-margin *ngFor="let m of medias">
-        <img src="{{m.images.thumbnail.url}}" width="{{m.images.thumbnail.width}}" height="{{m.images.thumbnail.height}}">
+        <img src="{{m.images.thumbnail.url}}" [width]="imgWidth" [height]="imgWidth">
       </ion-col>
     </ion-row>
   </ion-grid>

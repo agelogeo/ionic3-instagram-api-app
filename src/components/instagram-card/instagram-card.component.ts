@@ -5,12 +5,11 @@ import { Component, Input } from '@angular/core';
   templateUrl: 'instagram-card.component.html'
 })
 export class InstagramCardComponent {
-
+ 
   @Input() public medias;
   @Input() public isGrade;
+  @Input() public imgWidth;
 
-  constructor() {
-   
-  }
+  constructor() {}
 
 }
