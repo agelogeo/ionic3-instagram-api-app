@@ -23,6 +23,7 @@
 
 <ion-content>
 
+
   <ion-list class="distance" text-center>
     <ion-item>
       <span class="msg">Exibindo um raio de {{distance}} km</span>
@@ -30,7 +31,10 @@
     </ion-item>
   </ion-list>
 
-  <instagram-card [medias]="medias" [isGrade]="isGrade"></instagram-card>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <instagram-card [medias]="medias" [isGrade]="isGrade" [imgWidth]="imgWidth"></instagram-card>
   
 
 </ion-content>

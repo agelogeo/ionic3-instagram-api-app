@@ -2,9 +2,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LocationsPage } from './../locations/locations';
 import { InstagramService } from './../../providers/instagram.service';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, PopoverController, NavParams, Content } from 'ionic-angular';
+import { NavController, PopoverController, NavParams, Content, Loading } from 'ionic-angular';
 
-import { AlertController, Header } from 'ionic-angular';
+import { AlertController, Header, LoadingController } from 'ionic-angular';
 import { SettingsPage } from './../settings/settings';
 import { SettingsMenuPage } from './../settings-menu/settings-menu';
 
@@ -19,6 +19,7 @@ export class HomePage {
   medias;
   locationName: string;
   isGrade = false;
+  imgWidth; 
 
   constructor(
     public alertCtrl: AlertController,
@@ -26,13 +27,20 @@ export class HomePage {
     public popoverCtrl: PopoverController,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public geo: Geolocation
+    public geo: Geolocation,
+    public loadingCtrl: LoadingController
   ) {
     this.medias = [];
   } 
 
   ionViewWillEnter() {
     this.distance = this.instaService.distance;
+    this.imgWidth = (this.content.contentWidth/3);
+    let loading: Loading = this.showLoading();
+    this.loadLocationAndMedias(loading);
+  }
+
+  loadLocationAndMedias(loading) {
 
     this.geo.getCurrentPosition()
       .then((resp) => {
@@ -52,8 +60,16 @@ export class HomePage {
           .subscribe((address) => {
             this.locationName = address.results[1].formatted_address;
           });
+        
+        if (loading.dismiss) {
+          loading.dismiss();
+        } else {
+          loading.complete();
+        }
+
       })
       .catch((error) => {
+        loading.dismiss();
         this.showAlert('erro ao conferir geolocalização: ' + error);
       });
   }
@@ -80,6 +96,19 @@ export class HomePage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  showLoading(): Loading {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
+    return loader;
+  }
+
+  doRefresh(refresher) {
+    this.loadLocationAndMedias(refresher);
   }
 
   /*
