@@ -26,7 +26,6 @@ export class InstagramService {
   setLocation(lat, long) {
     this.lat = lat;
     this.long = long;
-    console.log(lat + ' ||| ' + long);
   }
 
   getMediaByLocation(response): Observable<any> {
