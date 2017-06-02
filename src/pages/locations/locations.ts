@@ -1,3 +1,4 @@
+import { LocationPage } from './../location/location';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -22,12 +23,18 @@ export class LocationsPage {
     let locations: string[] = [];
 
     for (let m of medias) {
-      locations.push(m.location.name);
+      locations.push(m.location);
     }
 
     return locations.filter((loc) => {
       this.locations.push(loc);
     })
+  }
+
+  showLocationPage(location) {
+    this.navCtrl.push(LocationPage, {
+      location: location
+    });
   }
 
 }

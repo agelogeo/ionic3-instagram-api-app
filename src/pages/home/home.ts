@@ -1,3 +1,5 @@
+import { UserProfilePage } from './../user-profile/user-profile';
+import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationsPage } from './../locations/locations';
 import { InstagramService } from './../../providers/instagram.service';
@@ -19,6 +21,7 @@ export class HomePage {
   locationName: string;
   isGrade = false;
   imgWidth; 
+  credentials;
 
   constructor(
     public alertCtrl: AlertController,
@@ -27,12 +30,20 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public geo: Geolocation,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public storage: Storage
   ) {
     this.medias = [];
   } 
 
   ionViewWillEnter() {
+    this.storage.get('instagram')
+      .then((instagram) => {
+        if (instagram) {
+          this.credentials = instagram;
+        }
+      });
+    
     this.distance = this.instaService.distance;
     this.imgWidth = (this.content.contentWidth/3);
     let loading: Loading = this.showLoading();
@@ -46,13 +57,12 @@ export class HomePage {
         this.instaService.setLocation(resp.coords.latitude, resp.coords.longitude);
       })
       .then(() => {
-        let response = this.navParams.get('response')
-          
-        this.instaService.getByLocation(response)
+       
+        this.instaService.getByLocation(this.credentials)
           .subscribe((res) => {
             this.medias = res.data;
           }, (error) => {
-            this.showAlert('ERROR: ' + error)
+            this.showAlert('ERROR: ' + error);
           });
         
         this.instaService.getLocationName()
@@ -109,15 +119,5 @@ export class HomePage {
   doRefresh(refresher) {
     this.loadLocationAndMedias(refresher);
   }
-
-  /*
-  onScroll() {
-    if (this.content.scrollTop > 50) {
-      this.title = 'OPA!!';
-    } else {
-      this.title = 'NEARGRAM';
-    }
-  }
-  */
 
 }

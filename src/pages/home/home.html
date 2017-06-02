@@ -34,7 +34,13 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <instagram-card [medias]="medias" [isGrade]="isGrade" [imgWidth]="imgWidth"></instagram-card>
+
+  <instagram-card 
+    [medias]="medias" 
+    [isGrade]="isGrade" 
+    [imgWidth]="imgWidth"
+    [credentials]="credentials">
+  </instagram-card>
   
 
 </ion-content>
