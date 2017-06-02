@@ -1,19 +1,5 @@
 instagram-card {
 
-    .card { 
-        width:100%;
-        box-shadow: inherit;
-        margin-bottom:5px;
-
-        .label {
-            margin:5px 8px 5px 0;
-        }
-    }
-
-    .card-content {
-        padding-top:0px;
-    }
-
     .item-inner > .icon {
         font-size:1.4em;
         color:#999;
@@ -34,18 +20,6 @@ instagram-card {
             color:#333;
         }
 
-    }
-
-    #icons {
-        padding:10px 10px 0px 10px;
-
-        .icon {
-            font-size:1.7em;
-        }
-    }
-
-    .likes {
-        padding:0px 16px;
     }
 
     .grid > .row > .col {

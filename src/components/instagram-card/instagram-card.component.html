@@ -1,11 +1,11 @@
 <div *ngIf="isGrade == false; else gradeCard">
-  <ion-card no-margin *ngFor="let m of medias">
+  <ion-card class="instagram-media" no-margin *ngFor="let m of medias">
     <ion-item>
       <ion-avatar item-left>
         <img src="{{m.user.profile_picture}}">
       </ion-avatar>
       <p>
-        {{m.user.username}} <br />
+        <span (click)="showUserProfile(m.user.id)">{{m.user.username}}</span> <br />
         <small>{{m.location.name}}</small>
       </p> 
       <ion-icon name="more" item-right></ion-icon>
@@ -15,7 +15,7 @@
     
     <ion-row id="icons">
       <ion-col col-1>
-        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon (click)="likeMedia(m.id)" name="heart-outline"></ion-icon>
       </ion-col>
       <ion-col col-1>
         <ion-icon name="text"></ion-icon>
@@ -36,7 +36,7 @@
   <ion-grid no-padding>
     <ion-row>
       <ion-col col-4 no-padding no-margin *ngFor="let m of medias">
-        <img src="{{m.images.thumbnail.url}}" [width]="imgWidth" [height]="imgWidth">
+        <img (click)="showMedia(m)" src="{{m.images.thumbnail.url}}" [width]="imgWidth" [height]="imgWidth">
       </ion-col>
     </ion-row>
   </ion-grid>
