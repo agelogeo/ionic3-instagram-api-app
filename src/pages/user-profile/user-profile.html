@@ -1,0 +1,53 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{user.username}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list class="info" padding no-lines>
+    <ion-item >
+      <ion-avatar item-left>
+        <img src="{{user.profile_picture}}">
+      </ion-avatar>
+      <ion-row>
+        <ion-row class="counts" text-center>
+          <ion-col col-4>
+            <p><strong>463</strong></p>
+            <p text-nowrap>posts</p>
+          </ion-col>
+          <ion-col col-4>
+            <p><strong>8489</strong></p>
+            <p>seguidores</p>
+          </ion-col>
+          <ion-col col-4>
+            <p><strong>1034</strong></p>
+            <p>seguindo</p>
+          </ion-col>
+          <ion-col col-12>
+            <button class="followBtn" ion-button block small outline color="light">Seguir</button>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+    </ion-item>
+
+    <div class="bio">
+      <p><strong>{{user.full_name}}</strong></p>
+      <p>{{user.bio}}</p>
+    </div>
+  </ion-list>
+
+  <ion-grid no-padding> 
+    <ion-row>
+      <ion-col col-4 no-padding no-margin *ngFor="let m of medias">
+        <img src="{{m.images.thumbnail.url}}">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

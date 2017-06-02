@@ -1,0 +1,54 @@
+page-user-profile {
+
+    .info {
+        margin-bottom:0;
+
+        .item {
+            padding-left:0;
+
+            ion-avatar {
+                min-width:80px;
+                min-height:80px;
+
+                img {
+                    width:80px;
+                    height:80px;
+                }
+
+                .row .counts .col p {
+                    color:#333;
+                }
+            }
+        }
+    }
+
+    .bio {
+        p {
+            padding-top:5px;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 0em;
+        }
+
+        p:first-child { 
+            padding-top: 15px;
+        }
+
+        p:last-child {
+            padding-bottom:10px;
+        }
+    }
+
+    .label {
+        margin:0;
+    }
+
+    .followBtn {
+        color:#333;
+        text-transform: capitalize;
+    }
+
+    .grid > .row > .col {
+        padding-right: 2px !important;
+    }
+
+}
