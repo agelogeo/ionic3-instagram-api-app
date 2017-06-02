@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{location.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-grid no-padding> 
+    <ion-row>
+      <ion-col col-4 no-padding no-margin *ngFor="let m of medias" (click)="showMedia(m)">
+        <img src="{{m.images.thumbnail.url}}">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
