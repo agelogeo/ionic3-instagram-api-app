@@ -19,7 +19,7 @@
 .toolbar-ios ion-title {
     padding-left: 12px;
     padding-right: 50px;
-    position:relative;
+    position: relative;
 
     p {
         font-size:0.6em;
@@ -28,4 +28,30 @@
 
 .toolbar-title-ios {
     text-align: left;
+}
+
+.instagram-media { 
+    width:100%;
+    box-shadow: inherit;
+    margin-bottom:5px;
+
+    .label {
+        margin:5px 8px 5px 0;
+    }
+    
+    .card-content {
+        padding-top:0px;
+    }
+
+    #icons {
+        padding:10px 10px 0px 10px;
+
+        .icon {
+            font-size:1.7em;
+        }
+    }
+
+    .likes {
+        padding:0px 16px;
+    }
 }
