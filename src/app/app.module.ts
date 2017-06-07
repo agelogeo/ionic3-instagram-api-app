@@ -1,9 +1,13 @@
+import { Globalization } from '@ionic-native/globalization';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { PrivacyPage } from './../pages/privacy/privacy';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Http } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -18,6 +22,8 @@ import { LocationsPage } from './../pages/locations/locations';
 import { LoginPage } from './../pages/login/login';
 import { HttpModule } from "@angular/http";
 import { UserProfilePage } from './../pages/user-profile/user-profile';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -30,13 +36,21 @@ import { UserProfilePage } from './../pages/user-profile/user-profile';
     LocationsPage,
     UserProfilePage,
     MediaPage,
-    LocationPage
+    LocationPage,
+    PrivacyPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +62,8 @@ import { UserProfilePage } from './../pages/user-profile/user-profile';
     LocationsPage,
     UserProfilePage,
     MediaPage,
-    LocationPage
+    LocationPage,
+    PrivacyPage
   ],
   providers: [
     StatusBar,
@@ -56,7 +71,13 @@ import { UserProfilePage } from './../pages/user-profile/user-profile';
     InstagramService,
     Geolocation,
     Storage,
+    InAppBrowser,
+    Globalization,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

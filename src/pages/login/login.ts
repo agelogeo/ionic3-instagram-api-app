@@ -1,11 +1,16 @@
-import { HomePage } from './../home/home';
-import { InstagramService } from './../../providers/instagram.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Globalization } from '@ionic-native/globalization';
 
 import { Instagram } from "ng2-cordova-oauth/core";  
 import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from "@ngx-translate/core";
+
+import { PrivacyPage } from './../privacy/privacy';
+import { HomePage } from './../home/home';
+import { InstagramService } from './../../providers/instagram.service';
 
 @Component({
   selector: 'page-login',
@@ -26,10 +31,11 @@ export class LoginPage {
     public instaService: InstagramService,
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public storage: Storage
+    public storage: Storage,
+    public translate: TranslateService,
+    private iab: InAppBrowser,
+    public global: Globalization
   ) {}
-
-  ionViewWillLoad() {}
 
   login() {
     this.oauth.logInVia(this.instagramProvider) 
@@ -51,6 +57,11 @@ export class LoginPage {
     this.navCtrl.setRoot(HomePage, {
       response: { access_token: '641281484.85ebf45.dada69ec7e6040a6968989cd062af79a' }
     });
+  }
+
+  showPrivacy() {
+    const browser = this.iab.create('http://nearmedias.com/privacy/');
+    browser.show();
   }
 
   showAlert(message) {

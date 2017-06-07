@@ -1,9 +1,18 @@
 <ion-content padding>
 
   <div class="login-content" text-center>
-    <img src="assets/img/neargram_logo.png" width="100%" >
+      <img src="https://instagram-brand.com/wp-content/uploads/2016/11/app-icon2.png" width="25%">
+    <h1>
+      <strong>
+        NearMe
+      </strong>
+    </h1>
     <br />
-    <button ion-button block (click)="loginFalse()">ENTRAR COM INSTAGRAM</button>
+    <button ion-button block (click)="login()">{{ 'btn_login' | translate }}</button>
+    <button ion-button block clear color="dark" (click)="showPrivacy()">{{ 'btn_privacy' | translate }}</button>
+    
+    <small text-center>{{ 'text_privacy' | translate }}
+    </small>
   </div>
 
 </ion-content>
