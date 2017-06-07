@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      <p no-margin>Publicações próximas</p>
+      <p no-margin>{{ 'text_near' | translate }}</p>
       <span>{{locationName}}</span>
     </ion-title>
     <ion-buttons end>
@@ -23,11 +23,10 @@
 
 <ion-content>
 
-
   <ion-list class="distance" text-center>
     <ion-item>
-      <span class="msg">Exibindo um raio de {{distance}} km</span>
-      <button ion-button item-right small outline (click)="showSettings($event)">MODIFICAR</button>
+      <span class="msg" [translate]="'text_distance'" [translateParams]="{value: distance}"></span>
+      <button ion-button item-right small outline (click)="showSettings($event)">{{ 'btn_modify' | translate }}</button>
     </ion-item>
   </ion-list>
 
@@ -38,8 +37,7 @@
   <instagram-card 
     [medias]="medias" 
     [isGrade]="isGrade" 
-    [imgWidth]="imgWidth"
-    [credentials]="credentials">
+    [imgWidth]="imgWidth">
   </instagram-card>
   
 

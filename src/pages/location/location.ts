@@ -27,7 +27,6 @@ export class LocationPage {
   }
 
   showLocationMedias() {
-    console.log('LOCATION2 ' + this.location.id);
     this.instaService.getLocationMedias(this.location.id)
       .subscribe((medias) => {
         this.medias = medias.data;

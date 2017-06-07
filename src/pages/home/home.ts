@@ -1,13 +1,15 @@
-import { UserProfilePage } from './../user-profile/user-profile';
 import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
-import { LocationsPage } from './../locations/locations';
-import { InstagramService } from './../../providers/instagram.service';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, PopoverController, NavParams, Content, Loading } from 'ionic-angular';
 
 import { AlertController, LoadingController } from 'ionic-angular';
 import { SettingsPage } from './../settings/settings';
+import { LocationsPage } from './../locations/locations';
+import { InstagramService } from './../../providers/instagram.service';
+import { PrivacyPage } from './../privacy/privacy';
+import { UserProfilePage } from './../user-profile/user-profile';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-home',
@@ -31,9 +33,11 @@ export class HomePage {
     public navParams: NavParams,
     public geo: Geolocation,
     public loadingCtrl: LoadingController,
-    public storage: Storage
+    public storage: Storage,
+    public translate: TranslateService
   ) {
     this.medias = [];
+    this.credentials = {};
   } 
 
   ionViewWillEnter() {
@@ -41,6 +45,8 @@ export class HomePage {
       .then((instagram) => {
         if (instagram) {
           this.credentials = instagram;
+        } else {
+          this.credentials = this.navParams.get('response');
         }
       });
     
@@ -96,7 +102,7 @@ export class HomePage {
   listLocations() {
     this.navCtrl.push(LocationsPage, {
       medias: this.medias
-    })
+    });
   }
 
   showAlert(message) {
@@ -108,8 +114,13 @@ export class HomePage {
   }
 
   showLoading(): Loading {
+    let message;
+    this.translate.get('text_loading').subscribe((res: string) => {
+        message = res;
+    });
+
     let loader = this.loadingCtrl.create({
-      content: "Please wait..."
+      content: message
     });
     loader.present();
 

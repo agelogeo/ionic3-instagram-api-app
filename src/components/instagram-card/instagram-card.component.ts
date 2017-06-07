@@ -14,7 +14,6 @@ export class InstagramCardComponent {
   @Input() public medias;
   @Input() public isGrade;
   @Input() public imgWidth;
-  @Input() public credentials;
 
   constructor(
     public navCtrl: NavController,
@@ -24,8 +23,7 @@ export class InstagramCardComponent {
 
   showUserProfile(userId) {
     this.navCtrl.push(UserProfilePage, {
-      userId: userId,
-      credentials: this.credentials
+      userId: userId
     });
   }
 
@@ -36,7 +34,7 @@ export class InstagramCardComponent {
   }
 
   likeMedia(mediaId) {
-    this.instaService.addLikeToMedia(mediaId, this.credentials.access_token)
+    this.instaService.addLikeToMedia(mediaId)
       .subscribe(
         (like) => this.showAlert('curtiu '),
         (err) => this.showAlert(err)

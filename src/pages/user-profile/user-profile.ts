@@ -11,7 +11,6 @@ export class UserProfilePage {
   @ViewChild(Content) content: Content;
 
   user;
-  credentials;
   userId;
   medias;
   imgWidth;
@@ -26,7 +25,6 @@ export class UserProfilePage {
   }
 
   ionViewWillLoad() {
-    this.credentials = this.navParams.get('credentials');
     this.userId = this.navParams.get('userId');
     this.imgWidth = (this.content.contentWidth/3);
 
@@ -35,14 +33,14 @@ export class UserProfilePage {
   }
 
   getUserProfile() {
-    this.instaService.getUserProfile(this.userId, this.credentials.access_token)
+    this.instaService.getUserProfile(this.userId)
       .subscribe((user) => {
         this.user = user.data;
       });
   }
 
   getRecentMedias() {
-    this.instaService.getUserRecentMedias(this.userId, this.credentials.access_token)
+    this.instaService.getUserRecentMedias(this.userId)
       .subscribe((medias) => {
         this.medias = medias.data;
       });
