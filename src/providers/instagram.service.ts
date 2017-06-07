@@ -20,6 +20,7 @@ export class InstagramService {
     public storage: Storage
   ) {
     this.distance = 5;
+    this.token = {};
   }
 
   getByLocation(response) {
@@ -34,18 +35,18 @@ export class InstagramService {
     .map((res) => res.json());
   }
 
-  getUserProfile(userId, access_token) {
-    return this.http.get('https://api.instagram.com/v1/users/' + userId + '/?access_token=' + access_token)
+  getUserProfile(userId) {
+    return this.http.get('https://api.instagram.com/v1/users/' + userId + '/?access_token=' + this.token.access_token)
     .map((res) => res.json());
   }
 
-  getUserRecentMedias(userId, access_token) {
-    return this.http.get('https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + access_token)
+  getUserRecentMedias(userId) {
+    return this.http.get('https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + this.token.access_token)
     .map((res) => res.json());
   }
 
-  addLikeToMedia(mediaId, token) {
-    return this.http.post('https://api.instagram.com/v1/media/' + mediaId + '/likes/', {access_token: token}, {})
+  addLikeToMedia(mediaId) {
+    return this.http.post('https://api.instagram.com/v1/media/' + mediaId + '/likes/', {access_token: this.token.access_token}, {})
     .map((res) => res.json());
   }
 
@@ -66,17 +67,7 @@ export class InstagramService {
   changeDistance(distance) {
     this.distance = distance;
   }
-
-  getAccessToken() {
-    let token;
-    this.storage.get('instagram')
-      .then((instagram) => {
-        token = instagram.access_token;
-      });
-
-      return token;
-  }
-
+  
   showAlert(message) {
     let alert = this.alertCtrl.create({
       message: message,
