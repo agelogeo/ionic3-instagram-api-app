@@ -1,0 +1,19 @@
+{
+    "btn_login": "Entrar com Instagram",
+    "btn_privacy": "Política de Privacidade",
+    "text_privacy": "Ao fazer login com Instagram no NearMe, você automaticamente aceita nossa política de privacidade.",
+
+    "text_near": "Publicações próximas",
+    "text_distance": "Exibindo um raio de {{value}} km",
+    "btn_modify": "Modificar",
+
+    "text_likes": "curtidas",
+
+    "text_near_locations": "Locais próximos",
+
+    "text_settings": "Opções",
+    "label_distance": "DISTÂNCIA",
+    "text_logout": "Sair",
+
+    "text_loading": "Carregando..."
+}

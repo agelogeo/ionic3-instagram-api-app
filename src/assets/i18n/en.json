@@ -1,0 +1,19 @@
+{
+    "btn_login": "Login With Instagram",
+    "btn_privacy": "Privacy Policy",
+    "text_privacy": "By signing in with Instagram at NearMe, you automatically accept our privacy policy.",
+
+    "text_near": "Nearby publications",
+    "text_distance": "Showing a radius of {{value}} km",
+    "btn_modify": "Modify",
+
+    "text_likes": "likes",
+
+    "text_near_locations": "Nearby locations",
+
+    "text_settings": "Settings",
+    "label_distance": "DISTANCE",
+    "text_logout": "Logout",
+
+    "text_loading": "Loading..."
+}
