@@ -24,32 +24,31 @@ export class MyApp {
     translate: TranslateService
   ) {
 
-    global.getPreferredLanguage()
-      .then((res) => {
-        let lang = res.value.substring(0,2);
-        
-        if (lang == 'pt' || lang == 'en') {
-          translate.setDefaultLang(lang);
-        } else {
-          translate.setDefaultLang('en');
-        }
-      })
-      .catch(e => translate.setDefaultLang('en'));
-
-    storage.get('instagram')
-      .then((instagram) => {
-        if (instagram) {
-          this.rootPage = HomePage;
-        } else {
-          this.rootPage = LoginPage;
-        }
-      });
-
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      global.getPreferredLanguage()
+        .then((res) => {
+          let lang = res.value.substring(0,2);
+          
+          if (lang == 'pt' || lang == 'en') {
+            translate.setDefaultLang(lang);
+          } else {
+            translate.setDefaultLang('en');
+          }
+        });
+
+      storage.get('instagram')
+        .then((instagram) => {
+          if (instagram) {
+            this.rootPage = HomePage;
+          } else {
+            this.rootPage = LoginPage;
+          }
+        });
 
     });
   }
