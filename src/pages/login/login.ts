@@ -23,7 +23,7 @@ export class LoginPage {
       clientId: "85ebf4599fb74f1c9629ee3ad64c3bef",      // Register you client id from https://www.instagram.com/developer/
       redirectUri: 'http://localhost',  // Let is be localhost for Mobile Apps
       responseType: 'token',   // Use token only 
-      appScope: ['basic','public_content', 'likes', 'comments']
+      appScope: ['basic','public_content']
   });
 
   constructor(
