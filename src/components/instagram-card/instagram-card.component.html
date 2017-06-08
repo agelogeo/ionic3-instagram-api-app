@@ -12,15 +12,6 @@
     </ion-item>
 
     <img src="{{m.images.standard_resolution.url}}"> 
-    
-    <ion-row id="icons">
-      <ion-col col-1>
-        <ion-icon (click)="likeMedia(m.id)" name="heart-outline"></ion-icon>
-      </ion-col>
-      <ion-col col-1>
-        <ion-icon name="text"></ion-icon>
-      </ion-col>
-    </ion-row>
 
     <ion-row class="likes">
       <p><strong>{{m.likes.count}} {{ 'text_likes' | translate}}</strong></p>
