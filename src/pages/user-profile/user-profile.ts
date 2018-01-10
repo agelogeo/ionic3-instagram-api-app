@@ -11,9 +11,10 @@ export class UserProfilePage {
   @ViewChild(Content) content: Content;
 
   user;
+  counts;
   userId;
   medias;
-  imgWidth;
+  imgWidth = '33.333%';
 
   constructor(
     public navCtrl: NavController, 
@@ -21,12 +22,12 @@ export class UserProfilePage {
     public instaService: InstagramService
   ) {
     this.user = {};
+    this.counts = {};
     this.medias = [];
   }
 
   ionViewWillLoad() {
     this.userId = this.navParams.get('userId');
-    this.imgWidth = (this.content.contentWidth/3);
 
     this.getUserProfile();
     this.getRecentMedias();
@@ -36,6 +37,7 @@ export class UserProfilePage {
     this.instaService.getUserProfile(this.userId)
       .subscribe((user) => {
         this.user = user.data;
+        this.counts = user.data.counts;
       });
   }
 

@@ -20,7 +20,7 @@ export class LoginPage {
 
   private oauth: OauthCordova = new OauthCordova();
   private instagramProvider: Instagram = new Instagram({
-      clientId: "85ebf4599fb74f1c9629ee3ad64c3bef",      // Register you client id from https://www.instagram.com/developer/
+      clientId: "YOUR_CLIENT_ID",      // Register you client id from https://www.instagram.com/developer/
       redirectUri: 'http://localhost',  // Let is be localhost for Mobile Apps
       responseType: 'token',   // Use token only 
       appScope: ['basic','public_content']
@@ -53,14 +53,15 @@ export class LoginPage {
       });
   }
 
+  // set your token to test
   loginFalse() {
     this.navCtrl.setRoot(HomePage, {
-      response: { access_token: '641281484.85ebf45.dada69ec7e6040a6968989cd062af79a' }
+      response: { access_token: 'YOUR_ACCESS_TOKEN' }
     });
   }
 
   showPrivacy() {
-    const browser = this.iab.create('http://nearmedias.com/privacy/');
+    const browser = this.iab.create('http://localhost/privacy/');
     browser.show();
   }
 

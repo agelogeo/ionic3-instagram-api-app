@@ -18,15 +18,15 @@
       <ion-row>
         <ion-row class="counts" text-center>
           <ion-col col-4>
-            <p><strong>463</strong></p>
+            <p><strong>{{counts.media}}</strong></p>
             <p text-nowrap>posts</p>
           </ion-col>
           <ion-col col-4>
-            <p><strong>8489</strong></p>
+            <p><strong>{{counts.followed_by}}</strong></p>
             <p>seguidores</p>
           </ion-col>
           <ion-col col-4>
-            <p><strong>1034</strong></p>
+            <p><strong>{{counts.follows}}</strong></p>
             <p>seguindo</p>
           </ion-col>
           <ion-col col-12>
@@ -42,12 +42,10 @@
     </div>
   </ion-list>
 
-  <ion-grid no-padding> 
-    <ion-row>
-      <ion-col col-4 no-padding no-margin *ngFor="let m of medias">
-        <img src="{{m.images.thumbnail.url}}">
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <instagram-card 
+    [medias]="medias" 
+    [isGrade]="true" 
+    [imgWidth]="imgWidth">
+  </instagram-card>
 
 </ion-content>
